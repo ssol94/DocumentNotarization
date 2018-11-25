@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <!-- Theme style  -->
+      <style>
+      @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic,700italic);
+
+      *{margin: 0px; padding: 0px}
+
+      body{
+      background:#2c3e50;
+      font-family: 'Open Sans', sans-serif;
+      }
+
+      h1, button{
+      color:#fff;
+      text-align: center;
+      padding: 20px;
+      }
+
+      p{
+      color:#fff;
+      text-align: center;
+      padding-top: 500px;
+      font-size: 10px;
+      }
+
+      a{
+       text-decoration:none;
+       color:#fff;
+      }
+
+      a:hover{
+       color:#2ecc71;
+      }
+
+      .main{
+      display: block;
+      margin: 0 auto;
+      padding: 20px 0 200px 0;
+      }
+      .fileDiv {
+        display: block;
+        margin: 0 auto;
+        padding: 200px 0px 20px 100px;
+      }
+      .leftDiv {
+        width: 50%;
+        float: left;
+      }
+      .rightDiv {
+        width: 50%;
+        float: left;
+      }
+
+
+      .button-one{
+      text-align: center;
+      cursor: pointer;
+      font-size:24px;
+      margin: 0 0 0 100px;
+      }
+
+
+
+      /*Button One*/
+      .button-one {
+      padding:20px 60px;
+      outline: none;
+      background-color: #27ae60;
+      border: none;
+      border-radius:5px;
+      box-shadow: 0 9px #95a5a6;
+      }
+
+      .button-one:hover{
+      background-color: #2ecc71;
+      }
+
+      .button-one:active {
+      background-color: #2ecc71;
+      box-shadow: 0 5px #95a5a6;
+      transform: translateY(4px);
+      }
+
+      </style>
+      <script src='http://code.jquery.com/jquery-latest.js'></script>
+    </head>
+    <body>
+        <!-- <h1 id="msg">은솔</h1>-->
+        <h1>Check your document</h1>
+        <div class="fileDiv">
+          <input type="file" id="myFile">
+        </div>
+        <div class="main">
+          <div class="leftDiv">
+            <button id="ok" class="button-one">확인</button>
+          </div>
+          <div class="rightDiv">
+            <button id="store" class="button-one">저장</button>
+          </div>
+        </div>
+        <script>
+          $('#store').click( function() {
+              // ajax 요청
+              $.ajax({
+                  url: 'http://localhost:8080/convert',
+                  dataType: 'json',
+                  type: 'GET',
+                  data: {'msg':$('#msg').val()},
+                  success: function(result) {
+                      console.log('success : ', result)
+                  }
+              });
+          })
+          $('#ok').click( function() {
+              var str = $('#myFile').val()
+              console.log('str : ', str)
+              // ajax 요청
+              $.ajax({
+                  url: 'http://localhost:8080/confirm',
+                  dataType: 'json',
+                  type: 'GET',
+                  data: {},
+                  success: function(result) {
+                      console.log('success : ', result)
+                  }
+              });
+          })
+        </script>
+    </body>
+</html>
