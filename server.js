@@ -16,6 +16,8 @@ const options = { format: 'Letter' }
 const crypto = require('crypto')
 const md5File = require('md5-file/promise')
 
+// file upload
+const multer = require('multer');
 
 app.use(express.static(path.join(__dirname, 'html')));
 app.get('/', (req, res) => {
@@ -36,7 +38,7 @@ app.get('/convert', (req, res) => {
   // const value = crypto.createHash('sha512').update(uniqueNo).digest('hex')
   let hash = crypto.createHash('sha512').update(html).digest('hex')
   console.log('key : ', hash)
-
+/*
   axios({
     method: 'post',
     url: 'http://52.141.33.135:3001/btap/logistics/documentInfo',
@@ -48,7 +50,7 @@ app.get('/convert', (req, res) => {
     console.log('success')
   }).catch(function (error) {
     console.log('fail')
-  })
+  })*/
 })
 
 app.get('/confirm', (req, res) => {
@@ -58,7 +60,7 @@ app.get('/confirm', (req, res) => {
   const uniqueNo = html.substring(num, num+4)
   let hash = crypto.createHash('sha512').update(html2).digest('hex')
   console.log('key : ', hash)
-
+/*
   axios.get('http://52.141.33.135:3001/btap/logistics/documentInfo/' + uniqueNo)
   .then(function (response) {
     if (response.data == hash) {
@@ -66,7 +68,7 @@ app.get('/confirm', (req, res) => {
     } else {
       console.log('다름')
     }
-  })
+  })*/
 });
 
 app.listen(8080, () => {
