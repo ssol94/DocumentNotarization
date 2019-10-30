@@ -78,7 +78,7 @@
       "resolved": "https://registry.npmjs.org/aws4/-/aws4-1.8.0.tgz",
       "version": "1.8.0"
     },
-    "axios": "^0.18.0",
+    "axios": "^0.18.1",
     "base64-arraybuffer": {
       "integrity": "sha1-c5JncZI7Whl0etZmqlzUv5xunOg=",
       "resolved": "https://registry.npmjs.org/base64-arraybuffer/-/base64-arraybuffer-0.1.5.tgz",
